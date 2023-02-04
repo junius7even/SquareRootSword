@@ -38,9 +38,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 51201233
     locked: 0
@@ -52,4 +49,13 @@ TagManager:
     locked: 0
   - name: Cards
     uniqueID: 4087238601
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Scroll
+    uniqueID: 2089194019
+    locked: 0
+  - name: Button
+    uniqueID: 2957012895
     locked: 0
