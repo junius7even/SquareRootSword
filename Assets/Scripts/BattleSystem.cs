@@ -24,6 +24,7 @@ public class BattleSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Ends the battle and goes to the high score board if the player loses
         if (Input.GetKeyDown(KeyCode.H) && state == BattleState.LOST)
         {
             Debug.Log("You'ev hit the H button");
@@ -31,21 +32,28 @@ public class BattleSystem : MonoBehaviour
             
             StartTurn();
         }  
+
+        // Player attacks happen here
         if (Input.GetKeyDown(KeyCode.A) && state == BattleState.PLAYERTURN)
         {
             enemy.health.turnHealth = enemy.health.turnHealth - 1;
         }
 
+        // Go to player turn
         if (Input.GetKeyDown(KeyCode.L) && state == BattleState.START)
         {
             state = BattleState.PLAYERTURN;
             
         }
+        
+        // Player ends turn
         if (Input.GetKeyDown(KeyCode.Return) && state == BattleState.PLAYERTURN)
         {
             state = BattleState.PLAYERATTACK;
             EndTurn();
         }
+
+        // Player attacks with square root sword
         if (state == BattleState.PLAYERATTACK)
         {
             double rootResult = Mathf.Sqrt(enemy.health.currentHealth);
@@ -56,10 +64,12 @@ public class BattleSystem : MonoBehaviour
             }
             state = BattleState.ENEMYATTACK;
         }
+
+        // Enemy attacks player if it's not dead from the previous player attack
         if (state == BattleState.ENEMYATTACK)
         {
             if (enemy.health.currentHealth == 0)
-            {
+            { 
                 state = BattleState.WON;
             }
             else 
