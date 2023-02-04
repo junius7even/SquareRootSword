@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BaseEnemy : MonoBehaviour
 {
+    [field: SerializeField]
+    public Health health;
+
     // Start is called before the first frame update
     void Start()
     {
