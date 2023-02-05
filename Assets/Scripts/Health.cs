@@ -29,5 +29,8 @@ public class Health : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-    
+    public void ClampHealthCheck()
+    {
+        if (currentHealth > maxHealth) ResetHealth();
+    }
 }
