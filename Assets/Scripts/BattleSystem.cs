@@ -36,13 +36,14 @@ public class BattleSystem : MonoBehaviour
         // Player attacks happen here
         if (Input.GetKeyDown(KeyCode.A) && state == BattleState.PLAYERTURN)
         {
-            enemy.health.turnHealth = enemy.health.turnHealth - 1;
+            enemy.health.currentHealth--;
         }
 
         // Go to player turn
         if (Input.GetKeyDown(KeyCode.L) && state == BattleState.START)
         {
             state = BattleState.PLAYERTURN;
+            // Call the dealdamageToEnemy function here
             
         }
         
@@ -56,12 +57,7 @@ public class BattleSystem : MonoBehaviour
         // Player attacks with square root sword
         if (state == BattleState.PLAYERATTACK)
         {
-            double rootResult = Mathf.Sqrt(enemy.health.currentHealth);
-            bool isSquare = (rootResult % 1 == 0);
-            if (isSquare)
-            {
-                enemy.health.currentHealth = 0;
-            }
+            DealDamageToEnemy(Operator.SquareRoot);
             state = BattleState.ENEMYATTACK;
         }
 
@@ -87,13 +83,53 @@ public class BattleSystem : MonoBehaviour
 
     private void StartTurn()
     {
-        hero.health.turnStart();
-        enemy.health.turnStart();
+
     }
 
     private void EndTurn()
     {
-        hero.health.endTurn();
-        enemy.health.endTurn();
+
+    }
+
+    private void DealDamageToEnemy(Operator mathOperation, int operand2 = 0)
+    {
+        switch (mathOperation)
+        {
+            case Operator.SquareRoot: 
+                {
+                    double rootResult = Mathf.Sqrt(enemy.health.currentHealth);
+                    bool isSquare = (rootResult % 1 == 0);
+                    if (isSquare)
+                        enemy.health.currentHealth = 0;
+                    break;
+                }
+
+            case Operator.Plus: 
+                {
+                    enemy.health.currentHealth += operand2;
+                    break;
+                }
+               
+
+            case Operator.Minus:
+                {   
+                    enemy.health.currentHealth -= operand2;
+                    break;
+                }
+            case Operator.Multiplication:
+                {
+                    enemy.health.currentHealth *= operand2;
+                    break;
+                }
+
+            case Operator.Division:
+                {
+                    double divisionResult = (double)enemy.health.currentHealth/operand2;
+                    bool isDivisible = (divisionResult % 1 == 0);
+                    if (isDivisible)
+                        enemy.health.currentHealth /= operand2;
+                    break;
+                }
+        }
     }
 }

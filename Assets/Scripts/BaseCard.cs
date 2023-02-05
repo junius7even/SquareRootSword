@@ -45,20 +45,20 @@ public class BaseCard : MonoBehaviour
         }
 
         // TO DO: use cardValue
-        BaseHero.Operator heroType = closestHero.currentOperator;
-        if (heroType == BaseHero.Operator.Multiplication)
+        Operator heroType = closestHero.currentOperator;
+        if (heroType == Operator.Multiplication)
         {
             Debug.Log("Multiplication " + cardValue);
         }
-        else if (heroType == BaseHero.Operator.Division)
+        else if (heroType == Operator.Division)
         {
             Debug.Log("Division " + cardValue);
         }
-        else if (heroType == BaseHero.Operator.Plus)
+        else if (heroType == Operator.Plus)
         {
             Debug.Log("Plus " + cardValue);
         }
-        else if (heroType == BaseHero.Operator.Minus)
+        else if (heroType == Operator.Minus)
         {
             Debug.Log("Minus " + cardValue);
         }
