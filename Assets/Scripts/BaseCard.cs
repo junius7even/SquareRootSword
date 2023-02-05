@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class BaseCard : MonoBehaviour
 {
+    public TextMesh textMeshRef; // set in editor
+
     private bool dragging = false;
     private Vector3 offset;
     private Vector3 startPosition;
     Dictionary<BaseHero,int> overlappingHeros = new Dictionary<BaseHero, int>();
     private BaseHero closestHero;
     int cardValue;
+    private BattleSystem battleSystemRef;
 
     // Start is called before the first frame update
     void Start()
     {
         cardValue = Random.Range(1, 10); // currently initialize with random int in [1,9]
+        textMeshRef.text = cardValue.ToString();
+
+        battleSystemRef = GameObject.Find("BattleSystem").GetComponent<BattleSystem>();
+        if (battleSystemRef == null) Debug.Log(gameObject.name + ": BaseCard.cs Failed to find BattleSystem!");
     }
 
     // Update is called once per frame
@@ -45,7 +52,7 @@ public class BaseCard : MonoBehaviour
         }
 
         // TO DO: use cardValue
-        Operator heroType = closestHero.currentOperator;
+        /*Operator heroType = closestHero.currentOperator;
         if (heroType == Operator.Multiplication)
         {
             Debug.Log("Multiplication " + cardValue);
@@ -61,9 +68,10 @@ public class BaseCard : MonoBehaviour
         else if (heroType == Operator.Minus)
         {
             Debug.Log("Minus " + cardValue);
-        }
+        }*/
+        battleSystemRef.ReceiveInput(BSInputType.PLAYERATTACK, cardValue, closestHero.currentOperator);
 
-        Destroy(gameObject); // destroy used card
+        gameObject.SetActive(false);
         return true;
     }
 
