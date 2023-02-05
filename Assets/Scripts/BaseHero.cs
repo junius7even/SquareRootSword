@@ -16,6 +16,8 @@ public class BaseHero : MonoBehaviour
     // UI elements
     public SpriteRenderer operatorSprite;
 
+    public SpriteRenderer heroSprite;
+
     [field: SerializeField]
     public Operator currentOperator = Operator.Multiplication;
     
@@ -23,12 +25,14 @@ public class BaseHero : MonoBehaviour
     void Start()
     {
         this.operatorSprite.sprite = Resources.Load<Sprite>("MathSymbols/" + (string)Enum.GetName(typeof(Operator), currentOperator));
+        this.heroSprite.sprite = Resources.Load<Sprite>("HeroSprites/" + (string)Enum.GetName(typeof(Operator), currentOperator));
     }
 
     // Update is called once per frame
     void Update()
     {
         this.operatorSprite.sprite = Resources.Load<Sprite>("MathSymbols/" + (string)Enum.GetName(typeof(Operator), currentOperator));
+        this.heroSprite.sprite = Resources.Load<Sprite>("HeroSprites/" + (string)Enum.GetName(typeof(Operator), currentOperator));
     }
 
     void OnMouseDown()
