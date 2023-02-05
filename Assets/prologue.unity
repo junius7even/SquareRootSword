@@ -176,7 +176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a3f4eeaac058d40b5f040ff1e827c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  t: 0.01
 --- !u!114 &72404479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,7 +419,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -43, y: -229.7}
+  m_AnchoredPosition: {x: -43, y: -324.4}
   m_SizeDelta: {x: 458, y: 61.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &574564848
@@ -470,13 +469,13 @@ MonoBehaviour:
       - m_Target: {fileID: 1189106241}
         m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
         m_MethodName: ChangeScene
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Level1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &574564849
@@ -731,7 +730,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8c6a24f9cf200479081b654f8ada28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: Level1
+  Prologue: 
+  next: 
 --- !u!4 &1189106242
 Transform:
   m_ObjectHideFlags: 0
@@ -850,8 +850,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -27.49, y: 105.26}
-  m_SizeDelta: {x: 458, y: 674.3}
+  m_AnchoredPosition: {x: -44.6, y: 82.98654}
+  m_SizeDelta: {x: 458, y: 733.947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1893086624
 MonoBehaviour:
@@ -875,11 +875,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 18a789f09570a0f418d1f0a8c10025ec, type: 3}
-    m_FontSize: 28
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 3
+    m_MaxSize: 45
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -888,7 +888,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Once upon a time, in the mathematical world. \n People coexist peacefully
     with mathematical monsters.\n Until one day, the Infinite Lord appeared in this
-    world. \nBecause of the him, the mathematical monster became vicious and violent.\nAnd
+    world. \nBecause of him, the mathematical monster became vicious and violent.\nAnd
     took the lives of countless people. \nPeople live in fear of being ruled by the
     Infinite Lord. \nUntil you showed up \nAs the chosen brave Square root sward
     you pull out \nThen you set out on a journey to defeat the Infinite Lord."

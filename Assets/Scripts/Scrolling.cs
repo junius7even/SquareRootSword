@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Scrolling : MonoBehaviour
 {
-    public float t;
+    private float tm = 0;
+    private float t = 0.5f;
     // Start is called before the first frame update
     private Camera Cam;
     private Vector3 a;
@@ -13,13 +14,16 @@ public class Scrolling : MonoBehaviour
     {
         Cam = Camera.main;
         transform.position = Cam.WorldToScreenPoint(new Vector3(0, -16, 0));
+        tm = 0;
+        t = 0.5f;
         print("fjf");
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        tm = Mathf.Lerp(t, 1f, t * Time.deltaTime);
         a = Cam.ScreenToWorldPoint(transform.position);
         b = new Vector3(0, 0, 0);
-        transform.position = Cam.WorldToScreenPoint(Vector3.Lerp(a, b, t));
+        transform.position = Cam.WorldToScreenPoint(Vector3.Lerp(a, b, tm*Time.deltaTime));
     }
 }
