@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/prologue.unity
     guid: 2cf50b6b60b03a4459d4b3f1efeb82a1
+  - enabled: 1
+    path: Assets/Intro.unity
+    guid: dd473ed78f5a98c43af25fc3e8aab082
   m_configObjects: {}
