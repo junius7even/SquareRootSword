@@ -163,7 +163,8 @@ public class BattleSystem : MonoBehaviour
                 // To Do: show winning UI and highscores UI
                 //   alternatively go straight to shop scene
                 TransitionState(BattleState.NONE);
-                Loader.AdditiveLoad(Loader.Scene.ShopScene);
+
+                //Loader.AdditiveLoad(Loader.Scene.ShopScene);
             }
             return;
         }
@@ -174,6 +175,7 @@ public class BattleSystem : MonoBehaviour
             {
                 // To Do: show losing UI and highscores UI
                 //   alternatively go straight to shop scene
+                Loader.Load(Loader.Scene.GameOverScene);
                 TransitionState(BattleState.NONE);
             }
             return;
