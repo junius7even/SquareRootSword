@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum BattleState {START, PLAYERTURN, ENEMYTURN, PLAYERATTACK, ENEMYATTACK, WON, LOST}
 
@@ -11,6 +12,8 @@ public class BattleSystem : MonoBehaviour
 
     public BaseHero hero;
     public BaseEnemy enemy;
+
+    public Button endTurnButton;
 
     public BattleState state;
 
@@ -43,8 +46,9 @@ public class BattleSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.L) && state == BattleState.START)
         {
             state = BattleState.PLAYERTURN;
+            endTurnButton.onClick.AddListener(EndTurn);
             // Call the dealdamageToEnemy function here
-            
+
         }
         
         // Player ends turn
@@ -57,8 +61,7 @@ public class BattleSystem : MonoBehaviour
         // Player attacks with square root sword
         if (state == BattleState.PLAYERATTACK)
         {
-            DealDamageToEnemy(Operator.SquareRoot);
-            state = BattleState.ENEMYATTACK;
+
         }
 
         // Enemy attacks player if it's not dead from the previous player attack
@@ -86,23 +89,16 @@ public class BattleSystem : MonoBehaviour
 
     }
 
+
     private void EndTurn()
     {
-
+        state = BattleState.PLAYERATTACK;
     }
 
     private void DealDamageToEnemy(Operator mathOperation, int operand2 = 0)
     {
         switch (mathOperation)
         {
-            case Operator.SquareRoot: 
-                {
-                    double rootResult = Mathf.Sqrt(enemy.health.currentHealth);
-                    bool isSquare = (rootResult % 1 == 0);
-                    if (isSquare)
-                        enemy.health.currentHealth = 0;
-                    break;
-                }
 
             case Operator.Plus: 
                 {

@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using TMPro;
 
-public enum Operator{SquareRoot, Plus, Minus, Multiplication, Division,};
+public enum Operator{Plus, Minus, Multiplication, Division,};
 
 public class BaseHero : MonoBehaviour
 {
