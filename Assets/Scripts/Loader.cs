@@ -10,6 +10,7 @@ public static class Loader
         ShopScene,
         GameOverScene,
         DragDemo,
+        Victory,
     }
 
     public static void Load(Scene scene){
