@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: {fileID: 423363723296163726}
   attackDamage: 5
-  attackDamageTextMesh: {fileID: 0}
+  attackDamageTextMesh: {fileID: 3440987599075939642}
 --- !u!114 &423363723296163726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 75
   currentHealth: 0
-  textMeshRef: {fileID: 0}
+  textMeshRef: {fileID: 4021360268342434928}
 --- !u!1001 &2243512740465797439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -220,6 +220,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2948788107026708234, guid: b0e24882a411249d7880d3e0d82d3735, type: 3}
   m_PrefabInstance: {fileID: 2243512740465797439}
   m_PrefabAsset: {fileID: 0}
+--- !u!102 &4021360268342434928 stripped
+TextMesh:
+  m_CorrespondingSourceObject: {fileID: 2948788106350654799, guid: b0e24882a411249d7880d3e0d82d3735, type: 3}
+  m_PrefabInstance: {fileID: 2243512740465797439}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6854160077185242117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,5 +285,10 @@ PrefabInstance:
 --- !u!4 &3440987598352404655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8132948676614784170, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
+  m_PrefabInstance: {fileID: 6854160077185242117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!102 &3440987599075939642 stripped
+TextMesh:
+  m_CorrespondingSourceObject: {fileID: 8132948675928801599, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
   m_PrefabInstance: {fileID: 6854160077185242117}
   m_PrefabAsset: {fileID: 0}
