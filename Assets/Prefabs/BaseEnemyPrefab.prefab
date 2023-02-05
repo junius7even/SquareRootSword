@@ -24,14 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3502496102285384844}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 16, y: 16, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2062043624086650584}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!212 &8721679642824385115
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1171153525
-  m_SortingLayer: 3
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1508174139, guid: 0ceb830f05efb44a58490d2ef8c9efda, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -132,9 +132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 796cfec6b107d49669fed4522562a94f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamagePerLevel: 0000000004000000060000000f0000000a000000
+  healthPerLevel: 07000000130000005b000000970000004b010000
   health: {fileID: 423363723296163726}
   attackDamage: 5
   attackDamageTextMesh: {fileID: 3440987599075939642}
+  enemySprite: {fileID: 8721679642824385115}
 --- !u!114 &423363723296163726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2948788107026708234, guid: b0e24882a411249d7880d3e0d82d3735, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.41
+      value: -10.27
       objectReference: {fileID: 0}
     - target: {fileID: 2948788107026708234, guid: b0e24882a411249d7880d3e0d82d3735, type: 3}
       propertyPath: m_LocalPosition.y
@@ -266,7 +269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8132948676614784170, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.43
+      value: -5.85
       objectReference: {fileID: 0}
     - target: {fileID: 8132948676614784170, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
       propertyPath: m_LocalPosition.y
@@ -359,7 +362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffdb8460b27e94b0eae9c23bbe5db6ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: {fileID: 0}
 --- !u!102 &3440987599075939642 stripped
 TextMesh:
   m_CorrespondingSourceObject: {fileID: 8132948675928801599, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}

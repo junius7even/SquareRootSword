@@ -9,10 +9,12 @@ using UnityEngine.SceneManagement;
 
 // go to shop scene after transitioning to won/lost
 
-public enum BattleState {START, PLAYERTURN, PLAYERWAITING, PLAYERTURNEND, ENEMYTURN, ENEMYTURNEND, WON, LOST, NONE}
+public enum BattleState {STARTLEVEL, CARDPREP, PLAYERTURN, PLAYERWAITING, PLAYERTURNEND, ENEMYTURN, ENEMYTURNEND, WON, LOST, NONE}
 
 public class BattleSystem : MonoBehaviour
 {
+    private int levelNumber = 5;
+    
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
     public GameObject cardPrefab;
@@ -34,6 +36,8 @@ public class BattleSystem : MonoBehaviour
     public bool heroIsDragging = false;
 
     public GameObject buttonRef; // set in editor
+
+    public SpriteRenderer battleBackground; // set in editor
     // bound to button
     public void EndTurn()
     {
@@ -81,8 +85,19 @@ public class BattleSystem : MonoBehaviour
             input_queue.RemoveAt(0);
         }
 
+        if (state == BattleState.STARTLEVEL)
+        {
+            
+            enemy.health.maxHealth = enemy.healthPerLevel[levelNumber - 1];
+            enemy.health.currentHealth = enemy.health.maxHealth;
+            enemy.attackDamage = enemy.attackDamagePerLevel[levelNumber - 1];
+            enemy.enemySprite.sprite = Resources.Load<Sprite>("Enemies/level" + levelNumber.ToString());
+            battleBackground.sprite = Resources.Load<Sprite>("Backgrounds/background" + levelNumber.ToString());
+            TransitionState(BattleState.CARDPREP);
+        }
+
         // START state is in case we need a delay to run FX before starting player turn
-        if (state == BattleState.START)
+        if (state == BattleState.CARDPREP)
         {
             if (elapsedTime > 1)
             {
@@ -207,7 +222,7 @@ public class BattleSystem : MonoBehaviour
                 }
                 else
                 {
-                    TransitionState(BattleState.START);
+                    TransitionState(BattleState.CARDPREP);
                 }
             }
             return;
@@ -217,6 +232,7 @@ public class BattleSystem : MonoBehaviour
         {
             if (elapsedTime > 3)
             {
+                levelNumber++;
                 // To Do: show winning UI and highscores UI
                 Debug.Log("squar rootable");
                 // Loader.Load(Loader.Scene.Victory);   
@@ -257,7 +273,7 @@ public class BattleSystem : MonoBehaviour
         hero.health.ResetHealth();
 
         DeleteCards();
-        TransitionState(BattleState.START);
+        TransitionState(BattleState.STARTLEVEL);
 
         buttonRef.SetActive(true);
     }
@@ -265,7 +281,7 @@ public class BattleSystem : MonoBehaviour
     private void SpawnCards()
     {
         // setup new cards
-        int numCards = Random.Range(3, 6); // spawn 3 to 5 cards
+        int numCards = Random.Range(3, 3); // spawn 3 to 5 cards
         Vector3 cardLoc = new Vector3(-6.87f, -3.24f, 0); // To Do
         for (int i = 0; i < numCards; ++i)
         {
