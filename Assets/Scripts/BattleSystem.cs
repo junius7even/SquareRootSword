@@ -166,7 +166,6 @@ public class BattleSystem : MonoBehaviour
                 // Loader.Load(Loader.Scene.Victory);   
                 Loader.AdditiveLoad(Loader.Scene.Victory);
                 //   alternatively go straight to shop scene
-
             }
 
             if (elapsedTime > 6) {
@@ -184,6 +183,7 @@ public class BattleSystem : MonoBehaviour
             {
                 // To Do: show losing UI and highscores UI
                 //   alternatively go straight to shop scene
+                Loader.Load(Loader.Scene.GameOverScene);
                 TransitionState(BattleState.NONE);
             }
             return;

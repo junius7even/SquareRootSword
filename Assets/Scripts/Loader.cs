@@ -8,6 +8,8 @@ public static class Loader
     public enum Scene {
         SampleScene,
         ShopScene,
+        GameOverScene,
+        DragDemo,
         Victory,
     }
 
