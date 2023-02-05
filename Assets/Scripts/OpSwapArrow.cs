@@ -31,6 +31,5 @@ public class OpSwapArrow : MonoBehaviour
             else
                 hero.currentOperator += 1;
         }
-            
     }
 }

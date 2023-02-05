@@ -10,7 +10,7 @@ public class DragIndicator : MonoBehaviour
 
     private Vector3 camOffset = new Vector3(0, 0, 10);
 
-    private LineRenderer lr;
+    public LineRenderer lr;
     private Color c1 = Color.white;
     private Color c2 = Color.white;
 

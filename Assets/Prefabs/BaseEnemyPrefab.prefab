@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8721679642824385115}
   m_Layer: 0
   m_Name: SpriteRenderer
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,6 +157,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2062043624086650584}
     m_Modifications:
+    - target: {fileID: 406810905946107317, guid: b0e24882a411249d7880d3e0d82d3735, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 423363723296163726}
+    - target: {fileID: 2948788106350654785, guid: b0e24882a411249d7880d3e0d82d3735, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 2948788107026708234, guid: b0e24882a411249d7880d3e0d82d3735, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -213,6 +221,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Health
       objectReference: {fileID: 0}
+    - target: {fileID: 2948788107026708235, guid: b0e24882a411249d7880d3e0d82d3735, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704656662088560313, guid: b0e24882a411249d7880d3e0d82d3735, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0e24882a411249d7880d3e0d82d3735, type: 3}
 --- !u!4 &4021360268230516277 stripped
@@ -232,9 +248,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2062043624086650584}
     m_Modifications:
+    - target: {fileID: 8132948675928801597, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 8132948676614784169, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
       propertyPath: m_Name
       value: AttackDamage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8132948676614784169, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8132948676614784170, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
       propertyPath: m_RootOrder
@@ -280,13 +304,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8132948676745160960, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7960227101226637506, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
 --- !u!4 &3440987598352404655 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8132948676614784170, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
   m_PrefabInstance: {fileID: 6854160077185242117}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3440987599075939640 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8132948675928801597, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
+  m_PrefabInstance: {fileID: 6854160077185242117}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &809316839202305364
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440987599075939640}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.3263768, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.1427538, y: 1.6757814}
+  m_EdgeRadius: 0
+--- !u!114 &8731754134107804435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440987599075939640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffdb8460b27e94b0eae9c23bbe5db6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 0}
 --- !u!102 &3440987599075939642 stripped
 TextMesh:
   m_CorrespondingSourceObject: {fileID: 8132948675928801599, guid: 39d94bd1e2e0247889194387feba36b1, type: 3}
