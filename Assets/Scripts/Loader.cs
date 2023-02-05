@@ -8,6 +8,7 @@ public static class Loader
     public enum Scene {
         SampleScene,
         ShopScene,
+        Victory,
     }
 
     public static void Load(Scene scene){
