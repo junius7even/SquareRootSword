@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 // go to shop scene after transitioning to won/lost
 
@@ -217,9 +218,18 @@ public class BattleSystem : MonoBehaviour
             if (elapsedTime > 3)
             {
                 // To Do: show winning UI and highscores UI
+                Debug.Log("squar rootable");
+                // Loader.Load(Loader.Scene.Victory);   
+                Loader.AdditiveLoad(Loader.Scene.Victory);
                 //   alternatively go straight to shop scene
-                TransitionState(BattleState.NONE);
             }
+
+            if (elapsedTime > 6) {
+                Loader.UnloadAdditive(Loader.Scene.Victory);
+                TransitionState(BattleState.NONE);
+                Loader.Load(Loader.Scene.ShopScene);
+            }
+
             return;
         }
 
@@ -229,6 +239,7 @@ public class BattleSystem : MonoBehaviour
             {
                 // To Do: show losing UI and highscores UI
                 //   alternatively go straight to shop scene
+                Loader.Load(Loader.Scene.GameOverScene);
                 TransitionState(BattleState.NONE);
             }
             return;
