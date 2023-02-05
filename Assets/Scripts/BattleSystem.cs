@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // go to shop scene after transitioning to won/lost
 
@@ -29,6 +30,8 @@ public class BattleSystem : MonoBehaviour
 
     public BaseHero hero;
     public BaseEnemy enemy;
+
+    public Button endTurnButton;
 
     private List<GameObject> spawned_cards = new List<GameObject>();
     public BattleState state = BattleState.NONE;
@@ -90,6 +93,7 @@ public class BattleSystem : MonoBehaviour
         // Player attacks happen here
         if (state == BattleState.PLAYERTURN)
         {
+            
             if (cur_input.type == BSInputType.PLAYERATTACK)
             {
                 DealDamageToEnemy(cur_input.op, cur_input.cardValue);
@@ -104,6 +108,7 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.PLAYERTURNEND)
         {
+
             if (elapsedTime > 1) TransitionState(BattleState.ENEMYTURN);
             return;
         }
@@ -124,11 +129,12 @@ public class BattleSystem : MonoBehaviour
                 //   load next level by going to new scene
                 //   quit
             }
-            else 
+            else
             {
                 // Enemy attacks player if it's not dead from the previous player attack
                 DealDamageToHero();
-
+                // TODO: play animation
+                
                 TransitionState(BattleState.ENEMYTURNEND);
             }
             return;
@@ -185,7 +191,10 @@ public class BattleSystem : MonoBehaviour
 
         DeleteCards();
         TransitionState(BattleState.START);
+
+        buttonRef.SetActive(true);
     }
+
     private void SpawnCards()
     {
         // setup new cards
@@ -199,6 +208,7 @@ public class BattleSystem : MonoBehaviour
 
         buttonRef.SetActive(true);
     }
+
     private void DeleteCards()
     {
         while (spawned_cards.Count > 0)
@@ -209,6 +219,7 @@ public class BattleSystem : MonoBehaviour
 
         buttonRef.SetActive(false);
     }
+
     private bool enemySquareRootable()
     {
         double rootResult = Mathf.Sqrt(enemy.health.currentHealth);
@@ -218,12 +229,14 @@ public class BattleSystem : MonoBehaviour
     {
         // To Do: play attack and damage fx
         hero.health.currentHealth -= 5; // To Do: make damage random?
+
     }
     private void DealDamageToEnemy(Operator mathOperation, int operand2 = 0)
     {
         // To Do: play attack and damage fx
         switch (mathOperation)
         {
+
             case Operator.Plus: 
                 {
                     enemy.health.currentHealth += operand2;

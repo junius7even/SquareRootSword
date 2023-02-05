@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        // this.healthText.text = currentHealth.ToString();
         ResetHealth();
     }
 
@@ -26,4 +29,5 @@ public class Health : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
+
 }
