@@ -1520,7 +1520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6139153728089910458, guid: bb1b5808091b9244fa5c90aa3960c6a3, type: 3}
       propertyPath: next
-      value: Intro
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 6139153728089910458, guid: bb1b5808091b9244fa5c90aa3960c6a3, type: 3}
       propertyPath: Prologue
