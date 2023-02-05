@@ -13,7 +13,7 @@ public enum BattleState {STARTLEVEL, CARDPREP, PLAYERTURN, PLAYERWAITING, PLAYER
 
 public class BattleSystem : MonoBehaviour
 {
-    private int levelNumber = 5;
+    private int levelNumber = 1;
     
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
@@ -235,9 +235,10 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.WON)
         {
+            
             if (elapsedTime > 3)
             {
-                levelNumber++;
+                
                 // To Do: show winning UI and highscores UI
                 Debug.Log("squar rootable");
                 // Loader.Load(Loader.Scene.Victory);   
@@ -249,6 +250,7 @@ public class BattleSystem : MonoBehaviour
                 Loader.UnloadAdditive(Loader.Scene.Victory);
                 TransitionState(BattleState.NONE);
                 Loader.Load(Loader.Scene.ShopScene);
+                levelNumber++;
             }
 
             return;
