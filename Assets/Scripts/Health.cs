@@ -17,8 +17,6 @@ public class Health : MonoBehaviour
     {
 
         // this.healthText.text = currentHealth.ToString();
-        currentHealth = maxHealth;
-
         ResetHealth();
     }
 
