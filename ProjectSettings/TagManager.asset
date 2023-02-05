@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Hero
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -38,9 +40,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 51201233
     locked: 0
@@ -53,6 +52,23 @@ TagManager:
   - name: Cards
     uniqueID: 4087238601
     locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Scroll
+    uniqueID: 2089194019
+    locked: 0
+  - name: Button
+    uniqueID: 2957012895
+    locked: 0
+  - name: Sword
+    uniqueID: 1536456689
+    locked: 0
+  - name: Stone
+    uniqueID: 3521209931
+    locked: 0
+  - name: UI
+    uniqueID: 2540977123
   - name: victory scene
     uniqueID: 2533732905
     locked: 0

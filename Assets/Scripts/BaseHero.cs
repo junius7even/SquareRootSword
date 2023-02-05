@@ -11,27 +11,28 @@ public class BaseHero : MonoBehaviour
     [field: SerializeField]
     public Health health;
 
-    [field: SerializeField]
-    private BaseEnemy currentEnemy;
-
-
+    public bool isClicked = false;
+    
     // UI elements
-    public TextMesh operatorText;
+    public SpriteRenderer operatorSprite;
 
     [field: SerializeField]
     public Operator currentOperator = Operator.Multiplication;
-
+    
     // Start is called before the first frame update
     void Start()
     {
-        this.operatorText.text = Enum.GetName(typeof(Operator), currentOperator);
-        
+        this.operatorSprite.sprite = Resources.Load<Sprite>("MathSymbols/" + (string)Enum.GetName(typeof(Operator), currentOperator));
     }
 
     // Update is called once per frame
     void Update()
     {
-       this.operatorText.text = Enum.GetName(typeof(Operator), currentOperator);
-        
+        this.operatorSprite.sprite = Resources.Load<Sprite>("MathSymbols/" + (string)Enum.GetName(typeof(Operator), currentOperator));
+    }
+
+    void OnMouseDown()
+    {
+        isClicked = true;
     }
 }

@@ -6,16 +6,11 @@ public class BaseEnemy : MonoBehaviour
 {
     [field: SerializeField]
     public Health health;
+    public int attackDamage = 5;
+    public TextMesh attackDamageTextMesh;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        this.attackDamageTextMesh.text = attackDamage.ToString();
     }
 }
