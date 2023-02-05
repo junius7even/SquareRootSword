@@ -5,22 +5,7 @@ using UnityEngine.UI;
 
 // go to shop scene after transitioning to won/lost
 
-public enum BattleState {START, PLAYERTURN, PLAYERTURNEND, ENEMYTURN, ENEMYTURNEND, WON, LOST, NONE}
-public enum BSInputType { PLAYERATTACK, ENDTURN, NONE }
-
-class BSInput
-{
-    public BSInputType type = BSInputType.NONE;
-    public int cardValue = 0;
-    public Operator op = Operator.Plus;
-    public BSInput(BSInputType a_type, int a_cardValue, Operator a_op)
-    {
-        type = a_type;
-        cardValue = a_cardValue;
-        op = a_op;
-    }
-    public BSInput() {}
-};
+public enum BattleState {START, PLAYERTURN, PLAYERWAITING, PLAYERTURNEND, ENEMYTURN, ENEMYTURNEND, WON, LOST, NONE}
 
 public class BattleSystem : MonoBehaviour
 {
@@ -96,14 +81,19 @@ public class BattleSystem : MonoBehaviour
             
             if (cur_input.type == BSInputType.PLAYERATTACK)
             {
-                DealDamageToEnemy(cur_input.op, cur_input.cardValue);
-                //if () TransitionState(BattleState.PLAYERTURNEND);
+                TransitionState(BattleState.PLAYERWAITING);
             } else if (cur_input.type == BSInputType.ENDTURN)
             {
                 DeleteCards();
                 TransitionState(BattleState.PLAYERTURNEND);
             }
             return;
+        }
+        
+        // Handle player dragging to attack/health
+        if (state == BattleState.PLAYERWAITING)
+        {
+            
         }
 
         if (state == BattleState.PLAYERTURNEND)
@@ -228,7 +218,7 @@ public class BattleSystem : MonoBehaviour
     private void DealDamageToHero()
     {
         // To Do: play attack and damage fx
-        hero.health.currentHealth -= 5; // To Do: make damage random?
+        hero.health.currentHealth -= enemy.attackDamage; // To Do: make damage random?
 
     }
     private void DealDamageToEnemy(Operator mathOperation, int operand2 = 0)

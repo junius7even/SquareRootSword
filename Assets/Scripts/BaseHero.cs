@@ -25,7 +25,6 @@ public class BaseHero : MonoBehaviour
     void Start()
     {
         this.operatorText.text = Enum.GetName(typeof(Operator), currentOperator);
-        
     }
 
     // Update is called once per frame
