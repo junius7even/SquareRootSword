@@ -13,7 +13,7 @@ public class StartButtonScript : MonoBehaviour
 
     void TaskOnClick()
     {
-        Loader.Load(Loader.Scene.SampleScene);
+        Loader.UnloadSceneAsync(Loader.Scene.ShopScene);
         Debug.Log("Button was clicked!");
     }
 }
