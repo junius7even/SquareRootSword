@@ -157,7 +157,11 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.PLAYERTURNEND)
         {
-            if (elapsedTime > 1) TransitionState(BattleState.ENEMYTURN);
+            if (elapsedTime > 1)
+            {
+                hero.health.ClampHealthCheck();
+                TransitionState(BattleState.ENEMYTURN);
+            }
             return;
         }
 
@@ -201,6 +205,7 @@ public class BattleSystem : MonoBehaviour
         {
             if (elapsedTime > 2)
             {
+                enemy.ResetAttackDamage();
                 if (hero.health.currentHealth <= 0)
                 {
                     TransitionState(BattleState.LOST);
