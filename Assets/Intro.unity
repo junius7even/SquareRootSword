@@ -191,22 +191,11 @@ MonoBehaviour:
     can be rooted
   - 'To help you better use Square root sword '
   - 'We''ve got a math weapon for you '
-  - 'First, at the beginning of each turn, you draw some random cards '
-  - 'The cards just represent numbers, they don''t really do much '
-  - 'But you can drag these cards onto the math weapon of your choice '
-  - 'Give numbers to mathematical weapons '
-  - 'Then you can use the mathematical weapon to choose who to attack '
-  - 'You know, in the mathematical world '
-  - 'Any number you see is fair game '
-  - 'Including enemy health, attack power '
-  - 'Even your own health '
-  - 'If you want to end your turn, click Square root sward '
-  - 'All numbers in the field that can be rooted will be destroyed '
-  - 'But if the math monster is still alive '
-  - 'It will deal damage to you based on its attack power '
-  - 'Then it''s on to the next turn '
-  - 'So hit the monster before you go down '
-  - 'Ok, let''s start the fight '
+  - 'Use mathematical symbols to change the monster''s value '
+  - Then at the end of the turn, Square root sward a critical blow to the enemy
+  - 'Keep in mind that you can not only change the enemy''s health '
+  - All numbers can be changed
+  - So let's start the fight
   nextscene: Level1
   textSpeed: 0.1
 --- !u!114 &808456761
@@ -309,8 +298,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a64d721a79fc28b4a93b4f29e443451c, type: 2}
+  m_sharedMaterial: {fileID: -5270875589582460805, guid: a64d721a79fc28b4a93b4f29e443451c, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
