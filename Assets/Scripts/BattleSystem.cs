@@ -90,17 +90,6 @@ public class BattleSystem : MonoBehaviour
             return;
         }
 
-        // Player ends turn
-        if (Input.GetKeyDown(KeyCode.Return) && state == BattleState.PLAYERTURN)
-        {
-            if (elapsedTime > 1)
-            {
-                SpawnCards();
-                TransitionState(BattleState.PLAYERTURN);
-            }
-            return;
-        }
-
         // Player attacks happen here
         if (state == BattleState.PLAYERTURN)
         {
@@ -147,17 +136,6 @@ public class BattleSystem : MonoBehaviour
                 // TODO: play animation
                 
                 TransitionState(BattleState.ENEMYTURNEND);
-            }
-            return;
-        }
-
-        if (state == BattleState.LOST)
-        {
-            if (elapsedTime > 3)
-            {
-                // To Do: show winning UI and highscores UI
-                //   alternatively go straight to shop scene
-                TransitionState(BattleState.NONE);
             }
             return;
         }
