@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 53896668}
   m_Layer: 0
   m_Name: Heros
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 952690390}
   m_Layer: 0
   m_Name: RightArrow
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -796,9 +796,33 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4545113854351047405, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4545113854351047405, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1753990173
+      objectReference: {fileID: 0}
     - target: {fileID: 4730271341505685988, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
       propertyPath: m_Name
       value: Health
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855025076485884189, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
+      propertyPath: m_Size.x
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855025076485884189, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
+      propertyPath: m_Size.y
+      value: 0.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4855025076485884189, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 50f0f2910c88bb4479563ae2083f8211, type: 3}
+    - target: {fileID: 4855025076485884189, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7077066456428327678, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
       propertyPath: m_LocalPosition.y
@@ -807,6 +831,10 @@ PrefabInstance:
     - target: {fileID: 7106573733580821312, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
       propertyPath: m_Name
       value: BaseEnemyPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7106573733580821312, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 8721679642824385115, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
       propertyPath: m_Sprite
@@ -873,6 +901,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1063517366050605194, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
+      propertyPath: m_TagString
+      value: Hero
+      objectReference: {fileID: 0}
     - target: {fileID: 1229922822468086022, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
       propertyPath: battleSystem
       value: 
@@ -897,6 +929,18 @@ PrefabInstance:
       propertyPath: m_UsedByComposite
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7170414417979897034, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
+      propertyPath: m_TagString
+      value: Hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450114931820335986, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
+      propertyPath: m_TagString
+      value: Hero
+      objectReference: {fileID: 0}
+    - target: {fileID: 7450114931957453112, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
+      propertyPath: m_TagString
+      value: Hero
+      objectReference: {fileID: 0}
     - target: {fileID: 7708755277249864208, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
       propertyPath: m_Size.x
       value: 0.23125643
@@ -917,9 +961,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character05Atk_0
       objectReference: {fileID: 0}
+    - target: {fileID: 7816155318161769102, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
+      propertyPath: m_TagString
+      value: Hero
+      objectReference: {fileID: 0}
     - target: {fileID: 7990611360487255173, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050713393547146721, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
+      propertyPath: m_SortingLayer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8050713393547146721, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1753990173
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
@@ -937,7 +993,7 @@ GameObject:
   - component: {fileID: 1980837690}
   m_Layer: 0
   m_Name: LeftArrow
-  m_TagString: Untagged
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1191,8 +1247,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 51201233
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 60bd484ee9a654f6f9f039f7ca1b2397, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

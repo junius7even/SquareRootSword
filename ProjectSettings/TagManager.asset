@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Hero
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -64,4 +66,7 @@ TagManager:
     locked: 0
   - name: Stone
     uniqueID: 3521209931
+    locked: 0
+  - name: UI
+    uniqueID: 2540977123
     locked: 0
