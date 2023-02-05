@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class LevelManager : MonoBehaviour
 {
     public string SceneName;
@@ -11,11 +12,19 @@ public class LevelManager : MonoBehaviour
     {
     }
 
+    public void onSliderChange(float Value)
+    {
+        if (Value == 1)
+        {
+            ChangeScene();
+        }
+    }
     // Update is called once per frame
     void Update()
     {
         
     }
+
 
     public void ChangeScene()
     {

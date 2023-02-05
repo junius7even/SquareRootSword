@@ -161,8 +161,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -900}
-  m_SizeDelta: {x: 0, y: -1800}
+  m_AnchoredPosition: {x: 0, y: -0.00012207031}
+  m_SizeDelta: {x: 0, y: 0.00026798248}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &72404478
 MonoBehaviour:
@@ -875,7 +875,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 32
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -888,10 +888,10 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Once upon a time, in the mathematical world. \n People coexist peacefully
     with mathematical monsters.\n Until one day, the Infinite Lord appeared in this
-    world. \nBecause of the him, the mathematical monster became vicious and violent.\n
-    And took the lives of countless people. \nPeople live in fear of being ruled
-    by the Infinite Lord. \nUntil you showed up As the chosen brave Square root sward
-    you pull out Then you set out on a journey to defeat the Infinite Lord."
+    world. \nBecause of the him, the mathematical monster became vicious and violent.\nAnd
+    took the lives of countless people. \nPeople live in fear of being ruled by the
+    Infinite Lord. \nUntil you showed up As the chosen brave Square root sward you
+    pull out Then you set out on a journey to defeat the Infinite Lord."
 --- !u!222 &1893086625
 CanvasRenderer:
   m_ObjectHideFlags: 0
