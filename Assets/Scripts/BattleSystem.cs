@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 // go to shop scene after transitioning to won/lost
 
@@ -161,6 +162,9 @@ public class BattleSystem : MonoBehaviour
             if (elapsedTime > 3)
             {
                 // To Do: show winning UI and highscores UI
+                Debug.Log("squar rootable");
+                SceneManager.LoadScene(Loader.Scene.Victory.ToString());
+                // Loader.Load(Loader.Scene.Victory);   
                 //   alternatively go straight to shop scene
                 TransitionState(BattleState.NONE);
             }
