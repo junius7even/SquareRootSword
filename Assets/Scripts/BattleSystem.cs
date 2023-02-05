@@ -167,6 +167,7 @@ public class BattleSystem : MonoBehaviour
                 // Loader.Load(Loader.Scene.Victory);   
                 //   alternatively go straight to shop scene
                 TransitionState(BattleState.NONE);
+                Loader.AdditiveLoad(Loader.Scene.ShopScene);
             }
             return;
         }
