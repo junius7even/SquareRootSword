@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/DragDemo.unity
-    guid: 26a7ad479a4014f42ac181b855f62e4f
-  - enabled: 1
     path: Assets/Scenes/Victory.unity
     guid: 4ad9ad3a6136249e98d3f4cab0d823ca
   - enabled: 1
     path: Assets/Scenes/ShopScene.unity
     guid: 6de6d7bada0a14ea38692e3c1e40c314
+  - enabled: 1
+    path: Assets/Scenes/DragDemo.unity
+    guid: 26a7ad479a4014f42ac181b855f62e4f
   - enabled: 1
     path: Assets/Scenes/BSUpdateScene.unity
     guid: 615d17efec13f42de82704fcb490df56
