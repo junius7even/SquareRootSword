@@ -300,6 +300,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 374803670, guid: 88c72b53f03f64189a4ef204f0a1b9f6, type: 3}
+    - target: {fileID: 1229922822468086022, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
+      propertyPath: hero
+      value: 
+      objectReference: {fileID: 426569517}
     - target: {fileID: 5004804775633557249, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
       propertyPath: health
       value: 
@@ -323,6 +327,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7816155318161769102, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
   m_PrefabInstance: {fileID: 426569515}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &426569517 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5004804775633557249, guid: e58212dddbb77534a9d718a2c33938ea, type: 3}
+  m_PrefabInstance: {fileID: 426569515}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426569516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc99a6cf8e0d04b7ab2d20e5d42b87e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 82
   currentHealth: 0
-  turnHealth: 0
+  textMeshRef: {fileID: 0}
 --- !u!114 &1111132350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,4 +996,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   currentHealth: 0
-  turnHealth: 0
+  textMeshRef: {fileID: 0}

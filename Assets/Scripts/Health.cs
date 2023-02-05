@@ -8,8 +8,6 @@ public class Health : MonoBehaviour
     [field: SerializeField]
     public int maxHealth = 100;
 
-    public TextMeshProUGUI healthText;
-
     public int currentHealth;
 
     public TextMesh textMeshRef; // set in editor
@@ -18,7 +16,7 @@ public class Health : MonoBehaviour
     void Start()
     {
 
-        this.healthText.text = currentHealth.ToString();
+        // this.healthText.text = currentHealth.ToString();
         currentHealth = maxHealth;
 
         ResetHealth();
@@ -31,16 +29,7 @@ public class Health : MonoBehaviour
 
     public void ResetHealth()
     {
-        this.healthText.text = currentHealth.ToString();
         currentHealth = maxHealth;
+    }
 
-    }
-    void Update()
-    {
-        this.healthText.text = currentHealth.ToString();
-    }
-    void Update()
-    {
-        this.healthText.text = currentHealth.ToString();
-    }
 }

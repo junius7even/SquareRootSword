@@ -14,6 +14,7 @@ public class OpSwapArrow : MonoBehaviour
 
     void OnMouseUp()
     {
+        Debug.Log("You've clicked");
         if (battleSystem.state != BattleState.PLAYERTURN) { return; }
         if (currentDirection == ArrowDirection.Left)
         {

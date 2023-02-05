@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using TMPro;
 
 public enum Operator{Plus, Minus, Multiplication, Division,};
 
@@ -17,7 +16,7 @@ public class BaseHero : MonoBehaviour
 
 
     // UI elements
-    public TextMeshProUGUI operatorText;
+    public TextMesh operatorText;
 
     [field: SerializeField]
     public Operator currentOperator = Operator.Multiplication;
@@ -32,12 +31,7 @@ public class BaseHero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.operatorText.text = Enum.GetName(typeof(Operator), currentOperator);
-        
-    }
-
-    public void endTurn()
-    {
+       this.operatorText.text = Enum.GetName(typeof(Operator), currentOperator);
         
     }
 }

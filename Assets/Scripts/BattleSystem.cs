@@ -33,11 +33,6 @@ public class BattleSystem : MonoBehaviour
 
     public Button endTurnButton;
 
-
-    public Button endTurnButton;
-
-    public BattleState state;
-
     private List<GameObject> spawned_cards = new List<GameObject>();
     public BattleState state = BattleState.NONE;
     private List<BSInput> input_queue = new List<BSInput>();
@@ -95,26 +90,9 @@ public class BattleSystem : MonoBehaviour
             return;
         }
 
-        // get input from queue
-        BSInput cur_input = new BSInput();
-        if (input_queue.Count != 0)
-        {
-            cur_input = input_queue[0];
-            input_queue.RemoveAt(0);
-        }
-
-        // START state is in case we need a delay to run FX before starting player turn
-        if (state == BattleState.START)
-        {
-            state = BattleState.PLAYERTURN;
-            endTurnButton.onClick.AddListener(EndTurn);
-            // Call the dealdamageToEnemy function here
-
-        }
-        
         // Player ends turn
         if (Input.GetKeyDown(KeyCode.Return) && state == BattleState.PLAYERTURN)
-
+        {
             if (elapsedTime > 1)
             {
                 SpawnCards();
@@ -126,6 +104,7 @@ public class BattleSystem : MonoBehaviour
         // Player attacks happen here
         if (state == BattleState.PLAYERTURN)
         {
+            
             if (cur_input.type == BSInputType.PLAYERATTACK)
             {
                 DealDamageToEnemy(cur_input.op, cur_input.cardValue);
@@ -143,7 +122,6 @@ public class BattleSystem : MonoBehaviour
 
             if (elapsedTime > 1) TransitionState(BattleState.ENEMYTURN);
             return;
->>>>>>> main
         }
 
         if (state == BattleState.ENEMYTURN)
@@ -162,6 +140,14 @@ public class BattleSystem : MonoBehaviour
                 //   load next level by going to new scene
                 //   quit
             }
+            else
+            {
+                // Enemy attacks player if it's not dead from the previous player attack
+                DealDamageToHero();
+                // TODO: play animation
+                
+                TransitionState(BattleState.ENEMYTURNEND);
+            }
             return;
         }
 
@@ -169,10 +155,9 @@ public class BattleSystem : MonoBehaviour
         {
             if (elapsedTime > 3)
             {
-                // Enemy attacks player if it's not dead from the previous player attack
-                DealDamageToHero();
-
-                TransitionState(BattleState.ENEMYTURNEND);
+                // To Do: show winning UI and highscores UI
+                //   alternatively go straight to shop scene
+                TransitionState(BattleState.NONE);
             }
             return;
         }
@@ -228,11 +213,11 @@ public class BattleSystem : MonoBehaviour
 
         DeleteCards();
         TransitionState(BattleState.START);
-    }
 
         buttonRef.SetActive(true);
     }
-    private void DeleteCards()
+
+    private void SpawnCards()
     {
         // setup new cards
         int numCards = Random.Range(3, 6); // spawn 3 to 5 cards
@@ -246,12 +231,6 @@ public class BattleSystem : MonoBehaviour
         buttonRef.SetActive(true);
     }
 
-
-
-    private void EndTurn()
-    {
-        state = BattleState.PLAYERATTACK;
-
     private void DeleteCards()
     {
         while (spawned_cards.Count > 0)
@@ -262,6 +241,7 @@ public class BattleSystem : MonoBehaviour
 
         buttonRef.SetActive(false);
     }
+
     private bool enemySquareRootable()
     {
         double rootResult = Mathf.Sqrt(enemy.health.currentHealth);
