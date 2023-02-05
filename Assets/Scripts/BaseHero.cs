@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Operator{SquareRoot, Plus, Minus, Multiplication, Division,};
+
 public class BaseHero : MonoBehaviour
 {
 
@@ -13,8 +15,6 @@ public class BaseHero : MonoBehaviour
 
     [field: SerializeField]
     public Operator currentOperator = Operator.Multiplication;
-
-    public enum Operator{SquareRoot, Plus, Minus, Multiplication, Division,};
 
     // Start is called before the first frame update
     void Start()
