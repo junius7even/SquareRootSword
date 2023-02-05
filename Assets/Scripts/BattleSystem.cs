@@ -13,7 +13,7 @@ public enum BattleState {STARTLEVEL, CARDPREP, PLAYERTURN, PLAYERWAITING, PLAYER
 
 public class BattleSystem : MonoBehaviour
 {
-    private int levelNumber = 1;
+    public static int levelNumber = 1;
     
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
@@ -317,12 +317,12 @@ public class BattleSystem : MonoBehaviour
     }
     private bool heroHealthSquareRootable()
     {
-        double rootResult = Mathf.Sqrt(enemy.health.currentHealth);
+        double rootResult = Mathf.Sqrt(hero.health.currentHealth);
         return (rootResult % 1 == 0);
     }
     private bool enemyAttackDamageSquareRootable()
     {
-        double rootResult = Mathf.Sqrt(enemy.health.currentHealth);
+        double rootResult = Mathf.Sqrt(enemy.attackDamage);
         return (rootResult % 1 == 0);
     }
     
