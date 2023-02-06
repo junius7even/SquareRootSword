@@ -184,7 +184,7 @@ public class BattleSystem : MonoBehaviour
         {
             if (enemyHealthSquareRootable())
             {
-                enemy.health.currentHealth = 0;
+                enemy.health.currentHealth = (int)Math.Sqrt(enemy.health.currentHealth);
                 TransitionState(BattleState.WON);
                 // To Do: play square root fx (square root sword drops down)
             }
@@ -240,7 +240,7 @@ public class BattleSystem : MonoBehaviour
             {
                 
                 // To Do: show winning UI and highscores UI
-                Debug.Log("squar rootable");
+                Debug.Log("square rootable");
                 // Loader.Load(Loader.Scene.Victory);   
                 Loader.AdditiveLoad(Loader.Scene.Victory);
                 //   alternatively go straight to shop scene
@@ -348,10 +348,7 @@ public class BattleSystem : MonoBehaviour
             }
             case Operator.Division:
             {
-                double divisionResult = (double)enemy.attackDamage/operand2;
-                bool isDivisible = (divisionResult % 1 == 0);
-                if (isDivisible)
-                    enemy.attackDamage /= operand2;
+                enemy.attackDamage /= operand2;
                 break;
             }
         }
@@ -378,10 +375,7 @@ public class BattleSystem : MonoBehaviour
             }
             case Operator.Division:
             {
-                double divisionResult = (double)hero.health.currentHealth/operand2;
-                bool isDivisible = (divisionResult % 1 == 0);
-                if (isDivisible)
-                    hero.health.currentHealth /= operand2;
+                hero.health.currentHealth /= operand2;
                 break;
             }
         }
@@ -409,10 +403,7 @@ public class BattleSystem : MonoBehaviour
                 }
             case Operator.Division:
                 {
-                    double divisionResult = (double)enemy.health.currentHealth/operand2;
-                    bool isDivisible = (divisionResult % 1 == 0);
-                    if (isDivisible)
-                        enemy.health.currentHealth /= operand2;
+                    enemy.health.currentHealth /= operand2;
                     break;
                 }
         }
