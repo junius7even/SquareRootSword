@@ -24,6 +24,6 @@ public class CollidingHealthText : MonoBehaviour
 
     void OnMouseExit()
     {
-        battleSystemRef.healthTextCurrentlyHovering = this;
+        battleSystemRef.healthTextCurrentlyHovering = null;
     }
 }

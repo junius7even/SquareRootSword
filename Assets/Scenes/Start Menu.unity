@@ -1518,14 +1518,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6139153728089910458, guid: bb1b5808091b9244fa5c90aa3960c6a3, type: 3}
-      propertyPath: next
-      value: Level1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6139153728089910458, guid: bb1b5808091b9244fa5c90aa3960c6a3, type: 3}
-      propertyPath: Prologue
-      value: prologue
-      objectReference: {fileID: 0}
     - target: {fileID: 6139153728089910459, guid: bb1b5808091b9244fa5c90aa3960c6a3, type: 3}
       propertyPath: m_Name
       value: SenceManager

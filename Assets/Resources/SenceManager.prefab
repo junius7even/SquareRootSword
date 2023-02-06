@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8c6a24f9cf200479081b654f8ada28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneName: prologue
+  Prologue: prologue
+  next: DragDemo
