@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class LevelManager : MonoBehaviour
 {
     public string Prologue;
     public string next;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,13 +36,7 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
+    
     public void ChangeScene(string Name)
     {
         SceneManager.LoadScene(Name);
