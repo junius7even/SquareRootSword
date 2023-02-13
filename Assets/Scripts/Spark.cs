@@ -5,7 +5,6 @@ using TMPro;
 
 public class Spark : MonoBehaviour
 {
-    private bool reverse = false;
     float LerpTime = 1.1f;
     public TextMeshProUGUI text;
     float t = 0f;

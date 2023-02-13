@@ -32,7 +32,7 @@ public class BaseHero : MonoBehaviour
     void Update()
     {
         this.operatorSprite.sprite = Resources.Load<Sprite>("MathSymbols/" + (string)Enum.GetName(typeof(Operator), currentOperator));
-        this.heroSprite.sprite = Resources.Load<Sprite>("HeroSprites/" + (string)Enum.GetName(typeof(Operator), currentOperator));
+        // this.heroSprite.sprite = Resources.Load<Sprite>("HeroSprites/" + (string)Enum.GetName(typeof(Operator), currentOperator));
     }
 
     void OnMouseDown()
