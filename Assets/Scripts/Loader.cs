@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public static class Loader
 {
     public enum Scene {
-        SampleScene,
+        StartMenu,
+        Victory,
+        Prologue,
         ShopScene,
         GameOverScene,
-        DragDemo,
-        Victory,
+        BattleScene,
     }
 
     public static void Load(Scene scene){

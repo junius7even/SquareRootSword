@@ -10,9 +10,11 @@ public class BaseHero : MonoBehaviour
 
     [field: SerializeField]
     public Health health;
-
+    
     public bool isClicked = false;
     
+    public static int levelHealth = 30;
+
     // UI elements
     public SpriteRenderer operatorSprite;
 
@@ -24,6 +26,8 @@ public class BaseHero : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health.currentHealth = levelHealth;
+        Debug.Log("Current health = "+ health.currentHealth);
         this.operatorSprite.sprite = Resources.Load<Sprite>("MathSymbols/" + (string)Enum.GetName(typeof(Operator), currentOperator));
         this.heroSprite.sprite = Resources.Load<Sprite>("HeroSprites/" + (string)Enum.GetName(typeof(Operator), currentOperator));
     }

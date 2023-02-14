@@ -14,6 +14,7 @@ public enum BattleState {STARTLEVEL, CARDPREP, PLAYERTURN, PLAYERWAITING, PLAYER
 public class BattleSystem : MonoBehaviour
 {
     public static int levelNumber = 1;
+    public static int numCards = 3;
 
     public Animator heroAnimator;
     public Animator enemyAnimator;
@@ -26,6 +27,7 @@ public class BattleSystem : MonoBehaviour
     public BaseEnemy enemy;
 
     public Button endTurnButton;
+    private bool hasLoaded;
 
     private List<GameObject> spawned_cards = new List<GameObject>();
     public BattleState state = BattleState.NONE;
@@ -74,6 +76,7 @@ public class BattleSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Current level: " + levelNumber);
         ResetGame();
     }
 
@@ -94,9 +97,11 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.STARTLEVEL)
         {
-            
+            for (int i = 0; i < enemy.healthPerLevel.Length; i++)
+                Debug.Log("Index " + i + ", value: " + enemy.healthPerLevel[i]);
             enemy.health.maxHealth = enemy.healthPerLevel[levelNumber - 1];
             enemy.health.currentHealth = enemy.health.maxHealth;
+            Debug.Log(enemy.health.currentHealth);
             enemy.attackDamage = enemy.attackDamagePerLevel[levelNumber - 1];
             enemy.enemySprite.sprite = Resources.Load<Sprite>("Enemies/level" + levelNumber.ToString());
             battleBackground.sprite = Resources.Load<Sprite>("Backgrounds/background" + levelNumber.ToString());
@@ -108,7 +113,7 @@ public class BattleSystem : MonoBehaviour
         {
             if (elapsedTime > 1)
             {
-                SpawnCards();
+                SpawnCards(numCards);
                 TransitionState(BattleState.PLAYERTURN);
             }
             return;
@@ -200,7 +205,8 @@ public class BattleSystem : MonoBehaviour
             {
                 enemy.health.currentHealth = (int)Math.Sqrt(enemy.health.currentHealth);
             }
-            else if (enemy.health.currentHealth <= 0)
+            
+            if (enemy.health.currentHealth <= 0)
             {
                 
                 if (enemyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f &&
@@ -214,7 +220,9 @@ public class BattleSystem : MonoBehaviour
                 {
                     enemyAnimator.SetBool("IsDead", true);
                 }
-                
+
+                return;
+
                 // Play death animation
                 // To Do: play square root fx (square root sword drops down)
                 // To Do: play normal enemy death fx
@@ -223,39 +231,38 @@ public class BattleSystem : MonoBehaviour
                 //   load next level by going to new scene
                 //   quit
             }
-            else
+            
+            if (enemyAttackDamageSquareRootable() && !hasSquareRooted)
             {
-                if (enemyAttackDamageSquareRootable() && !hasSquareRooted)
+                enemy.attackDamage = (int)Math.Sqrt(enemy.attackDamage);
+                hasSquareRooted = true;
+            }
+            
+            if (!hasAttacked)
+            {
+                if (heroHealthSquareRootable())
                 {
-                    enemy.attackDamage = (int)Math.Sqrt(enemy.attackDamage);
-                    hasSquareRooted = true;
+                    hero.health.currentHealth = 0;
+                    enemyAnimator.SetBool("IsAttacking", true);
+                    hasAttacked = true;
                 }
-                
-                if (!hasAttacked)
+                else
                 {
-                    if (heroHealthSquareRootable())
-                    {
-                        hero.health.currentHealth = 0;
-                        enemyAnimator.SetBool("IsAttacking", true);
-                        hasAttacked = true;
-                    }
-                    else
-                    {
-                        // Enemy attacks player if it's not dead from the previous player attack
-                        DealDamageToHero(Operator.Minus, enemy.attackDamage);
-                        enemyAnimator.SetBool("IsAttacking", true);
-                        hasAttacked = true;
-                    }
-                }
-                else if (enemyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f &&
-                         enemyAnimator.GetBool("IsAttacking"))
-                {
-                    enemyAnimator.SetBool("IsAttacking", false);
-                    hasAttacked = false;
-                    hasSquareRooted = false;
-                    TransitionState(BattleState.ENEMYTURNEND);
+                    // Enemy attacks player if it's not dead from the previous player attack
+                    DealDamageToHero(Operator.Minus, enemy.attackDamage);
+                    enemyAnimator.SetBool("IsAttacking", true);
+                    hasAttacked = true;
                 }
             }
+            else if (enemyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f &&
+                     enemyAnimator.GetBool("IsAttacking"))
+            {
+                enemyAnimator.SetBool("IsAttacking", false);
+                hasAttacked = false;
+                hasSquareRooted = false;
+                TransitionState(BattleState.ENEMYTURNEND);
+            }
+        
         }
         
         if (state == BattleState.ENEMYTURNEND)
@@ -280,23 +287,28 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.WON)
         {
-            if (elapsedTime > 3)
+            BaseHero.levelHealth = hero.health.currentHealth;
+            if (elapsedTime > 2)
             {
-                
                 // To Do: show winning UI and highscores UI
-                Debug.Log("square rootable");
+                Debug.Log("squar rootable");
                 // Loader.Load(Loader.Scene.Victory);   
-                Loader.AdditiveLoad(Loader.Scene.Victory);
+                if (levelNumber == 5)
+                    Loader.Load(Loader.Scene.GameOverScene);
+                else if (!hasLoaded)
+                {
+                    Loader.AdditiveLoad(Loader.Scene.Victory);
+                    hasLoaded = true;
+                }
                 //   alternatively go straight to shop scene
             }
 
-            if (elapsedTime > 6) {
+            if (elapsedTime > 4) {
                 Loader.UnloadAdditive(Loader.Scene.Victory);
                 TransitionState(BattleState.NONE);
                 Loader.Load(Loader.Scene.ShopScene);
                 levelNumber++;
             }
-
             return;
         } 
         
@@ -320,19 +332,15 @@ public class BattleSystem : MonoBehaviour
         // reset enemy health
         enemy.health.ResetHealth();
 
-        // reset player health
-        hero.health.ResetHealth();
-
         DeleteCards();
         TransitionState(BattleState.STARTLEVEL);
 
         buttonRef.SetActive(true);
     }
 
-    private void SpawnCards()
+    private void SpawnCards(int numCards)
     {
         // setup new cards
-        int numCards = Random.Range(3, 3); // spawn 3 to 5 cards
         Vector3 cardLoc = new Vector3(-6.87f, -3.24f, 0); // To Do
         for (int i = 0; i < numCards; ++i)
         {

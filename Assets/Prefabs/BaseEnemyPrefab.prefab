@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 956129970508996171}
   - component: {fileID: 8721679642824385115}
+  - component: {fileID: 6940601281146867474}
   m_Layer: 0
   m_Name: SpriteRenderer
   m_TagString: Enemy
@@ -84,6 +85,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6940601281146867474
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502496102285384844}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: c446ea9b0e8704cc8a3971b7a740ac3b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &7106573733580821312
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +158,14 @@ MonoBehaviour:
   health: {fileID: 423363723296163726}
   attackDamage: 5
   attackDamageTextMesh: {fileID: 3440987599075939642}
+  battleSystem: {fileID: 0}
+  level1Animator: {fileID: 22100000, guid: da817382de9f34a2db9b5facbd5e51f6, type: 2}
+  level2Animator: {fileID: 22100000, guid: c446ea9b0e8704cc8a3971b7a740ac3b, type: 2}
+  level3Animator: {fileID: 22100000, guid: f81669b3535c84929b8d151f3b45add7, type: 2}
+  level4Animator: {fileID: 22100000, guid: 31b352ee798474d4699b2bc2d3166d0d, type: 2}
+  level5Animator: {fileID: 22100000, guid: f154a8a1f44d64a0db3460d88faaad57, type: 2}
   enemySprite: {fileID: 8721679642824385115}
+  enemyAnimatorController: {fileID: 6940601281146867474}
 --- !u!114 &423363723296163726
 MonoBehaviour:
   m_ObjectHideFlags: 0

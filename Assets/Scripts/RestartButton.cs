@@ -12,7 +12,7 @@ public class RestartButton : MonoBehaviour
 
     void TaskOnClick()
     {
-        Loader.Load(Loader.Scene.DragDemo);
+        Loader.Load(Loader.Scene.BattleScene);
         Debug.Log("Button was clicked!");
     }
 }

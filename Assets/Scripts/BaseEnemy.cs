@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class BaseEnemy : MonoBehaviour
 {
-    public int[] attackDamagePerLevel = { 0, 4, 6, 15, 10 };
-    public int[] healthPerLevel = { 7, 19, 91, 151, 331 };
+    public int[] attackDamagePerLevel = { 0, 9, 10, 19, 23 };
+    public int[] healthPerLevel = { 23, 1, 1, 1, 1 };
+    // public int[] healthPerLevel = { 9, 19, 91, 151, 331 };
+
     private int maxAttackDamage;
     [field: SerializeField]
     public Health health;
@@ -14,10 +16,22 @@ public class BaseEnemy : MonoBehaviour
 
     public BattleSystem battleSystem;
 
-    public SpriteRenderer enemySprite;
+    private AnimatorOverrideController[] animatorOverrideControllers;
 
+    public AnimatorOverrideController level1Animator;
+    public AnimatorOverrideController level2Animator;
+    public AnimatorOverrideController level3Animator;
+    public AnimatorOverrideController level4Animator;
+    public AnimatorOverrideController level5Animator;
+
+    public SpriteRenderer enemySprite;
+    public Animator enemyAnimatorController;
     void Start()
     {
+        animatorOverrideControllers = new[] { level1Animator, level2Animator, level3Animator, level4Animator, level5Animator };
+        Debug.Log("The current level of battleSystem: " + BattleSystem.levelNumber);
+        enemyAnimatorController.runtimeAnimatorController = animatorOverrideControllers[BattleSystem.levelNumber-1];
+        Debug.Log(animatorOverrideControllers[BattleSystem.levelNumber-1].name.ToString());
         ResetAttackDamage();
     }
 

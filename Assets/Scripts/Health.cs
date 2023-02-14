@@ -15,7 +15,6 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         // this.healthText.text = currentHealth.ToString();
         ResetHealth();
     }
@@ -31,6 +30,6 @@ public class Health : MonoBehaviour
     }
     public void ClampHealthCheck()
     {
-        if (currentHealth > maxHealth) ResetHealth();
+        if (currentHealth > BaseHero.levelHealth) ResetHealth();
     }
 }
