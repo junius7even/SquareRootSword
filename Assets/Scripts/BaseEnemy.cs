@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class BaseEnemy : MonoBehaviour
 {
-    public int[] attackDamagePerLevel = { 0, 9, 10, 19, 23 };
-    public int[] healthPerLevel = { 23, 1, 1, 1, 1 };
-    // public int[] healthPerLevel = { 9, 19, 91, 151, 331 };
+    public int[] attackDamagePerLevel;
+
+    public int[] HealthPerLevel;
 
     private int maxAttackDamage;
     [field: SerializeField]
@@ -28,15 +29,18 @@ public class BaseEnemy : MonoBehaviour
     public Animator enemyAnimatorController;
     void Start()
     {
+        HealthPerLevel = new [] { 7, 19, 91, 151, 331 };
+        attackDamagePerLevel = new [] { 0, 4, 12, 23, 31 };
         animatorOverrideControllers = new[] { level1Animator, level2Animator, level3Animator, level4Animator, level5Animator };
-        Debug.Log("The current level of battleSystem: " + BattleSystem.levelNumber);
         enemyAnimatorController.runtimeAnimatorController = animatorOverrideControllers[BattleSystem.levelNumber-1];
+        Debug.Log("The current level of battleSystem: " + BattleSystem.levelNumber);
         Debug.Log(animatorOverrideControllers[BattleSystem.levelNumber-1].name.ToString());
         ResetAttackDamage();
     }
 
     void Update()
     {
+        enemyAnimatorController.runtimeAnimatorController = animatorOverrideControllers[BattleSystem.levelNumber-1];
         this.attackDamageTextMesh.text = attackDamage.ToString();
         maxAttackDamage = attackDamagePerLevel[BattleSystem.levelNumber-1];
     }
@@ -44,4 +48,5 @@ public class BaseEnemy : MonoBehaviour
     {
         attackDamage = maxAttackDamage;
     }
+
 }

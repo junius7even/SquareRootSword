@@ -9,9 +9,11 @@ public static class Loader
         StartMenu,
         Victory,
         Prologue,
-        ShopScene,
+        Intro,
         GameOverScene,
         BattleScene,
+        ShopScene,
+        GameEndScene
     }
 
     public static void Load(Scene scene){

@@ -97,11 +97,10 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.STARTLEVEL)
         {
-            for (int i = 0; i < enemy.healthPerLevel.Length; i++)
-                Debug.Log("Index " + i + ", value: " + enemy.healthPerLevel[i]);
-            enemy.health.maxHealth = enemy.healthPerLevel[levelNumber - 1];
+            for (int i = 0; i < enemy.someHealthPerLevel.Length; i++)
+                Debug.Log("Index " + i + ", value: " + enemy.someHealthPerLevel[i]);
+            enemy.health.maxHealth = enemy.someHealthPerLevel[levelNumber - 1];
             enemy.health.currentHealth = enemy.health.maxHealth;
-            Debug.Log(enemy.health.currentHealth);
             enemy.attackDamage = enemy.attackDamagePerLevel[levelNumber - 1];
             enemy.enemySprite.sprite = Resources.Load<Sprite>("Enemies/level" + levelNumber.ToString());
             battleBackground.sprite = Resources.Load<Sprite>("Backgrounds/background" + levelNumber.ToString());
@@ -294,7 +293,7 @@ public class BattleSystem : MonoBehaviour
                 Debug.Log("squar rootable");
                 // Loader.Load(Loader.Scene.Victory);   
                 if (levelNumber == 5)
-                    Loader.Load(Loader.Scene.GameOverScene);
+                    Loader.Load(Loader.Scene.GameEndScene);
                 else if (!hasLoaded)
                 {
                     Loader.AdditiveLoad(Loader.Scene.Victory);
@@ -307,6 +306,7 @@ public class BattleSystem : MonoBehaviour
                 Loader.UnloadAdditive(Loader.Scene.Victory);
                 TransitionState(BattleState.NONE);
                 Loader.Load(Loader.Scene.ShopScene);
+                numCards = 3;
                 levelNumber++;
             }
             return;

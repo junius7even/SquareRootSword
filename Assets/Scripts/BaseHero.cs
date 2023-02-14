@@ -27,7 +27,7 @@ public class BaseHero : MonoBehaviour
     void Start()
     {
         health.currentHealth = levelHealth;
-        Debug.Log("Current health = "+ health.currentHealth);
+        Debug.Log("Current health = "+ levelHealth);
         this.operatorSprite.sprite = Resources.Load<Sprite>("MathSymbols/" + (string)Enum.GetName(typeof(Operator), currentOperator));
         this.heroSprite.sprite = Resources.Load<Sprite>("HeroSprites/" + (string)Enum.GetName(typeof(Operator), currentOperator));
     }

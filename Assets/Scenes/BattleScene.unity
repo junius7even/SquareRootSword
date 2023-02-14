@@ -1024,6 +1024,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2176832642066426736, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
+      propertyPath: enemyAnimatorController
+      value: 
+      objectReference: {fileID: 695659110}
     - target: {fileID: 3440987598352404655, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1052,10 +1056,6 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.64
       objectReference: {fileID: 0}
-    - target: {fileID: 4855025076485884189, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 50f0f2910c88bb4479563ae2083f8211, type: 3}
     - target: {fileID: 4855025076485884189, guid: ec2e094b2c866e14bbfbb748450f0d95, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
