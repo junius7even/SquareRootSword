@@ -29,8 +29,8 @@ public class BaseEnemy : MonoBehaviour
     public Animator enemyAnimatorController;
     void Start()
     {
-        HealthPerLevel = new [] { 7, 19, 91, 151, 331 };
-        attackDamagePerLevel = new [] { 0, 4, 12, 23, 31 };
+        HealthPerLevel = new [] { 7, 27, 185, 270, 350 };
+        attackDamagePerLevel = new [] { 0, 7, 29, 33, 45 };
         animatorOverrideControllers = new[] { level1Animator, level2Animator, level3Animator, level4Animator, level5Animator };
         enemyAnimatorController.runtimeAnimatorController = animatorOverrideControllers[BattleSystem.levelNumber-1];
         Debug.Log("The current level of battleSystem: " + BattleSystem.levelNumber);

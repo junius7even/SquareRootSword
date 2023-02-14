@@ -97,16 +97,16 @@ public class BattleSystem : MonoBehaviour
 
         if (state == BattleState.STARTLEVEL)
         {
-            for (int i = 0; i < enemy.someHealthPerLevel.Length; i++)
-                Debug.Log("Index " + i + ", value: " + enemy.someHealthPerLevel[i]);
-            enemy.health.maxHealth = enemy.someHealthPerLevel[levelNumber - 1];
+            for (int i = 0; i < enemy.HealthPerLevel.Length; i++)
+                Debug.Log("Index " + i + ", value: " + enemy.HealthPerLevel[i]);
+            enemy.health.maxHealth = enemy.HealthPerLevel[levelNumber - 1];
             enemy.health.currentHealth = enemy.health.maxHealth;
             enemy.attackDamage = enemy.attackDamagePerLevel[levelNumber - 1];
             enemy.enemySprite.sprite = Resources.Load<Sprite>("Enemies/level" + levelNumber.ToString());
             battleBackground.sprite = Resources.Load<Sprite>("Backgrounds/background" + levelNumber.ToString());
             TransitionState(BattleState.CARDPREP);
         }
-
+        
         // START state is in case we need a delay to run FX before starting player turn
         if (state == BattleState.CARDPREP)
         {
@@ -202,7 +202,7 @@ public class BattleSystem : MonoBehaviour
         {
             if (enemyHealthSquareRootable())
             {
-                enemy.health.currentHealth = (int)Math.Sqrt(enemy.health.currentHealth);
+                enemy.health.currentHealth = 0;
             }
             
             if (enemy.health.currentHealth <= 0)
@@ -252,6 +252,7 @@ public class BattleSystem : MonoBehaviour
                     enemyAnimator.SetBool("IsAttacking", true);
                     hasAttacked = true;
                 }
+                hasAttacked = true;
             }
             else if (enemyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f &&
                      enemyAnimator.GetBool("IsAttacking"))
@@ -400,7 +401,8 @@ public class BattleSystem : MonoBehaviour
             }
             case Operator.Division:
             {
-                enemy.attackDamage /= operand2;
+                if (enemy.attackDamage % operand2 == 0) 
+                    enemy.attackDamage /= operand2;
                 break;
             }
         }
@@ -427,7 +429,8 @@ public class BattleSystem : MonoBehaviour
             }
             case Operator.Division:
             {
-                hero.health.currentHealth /= operand2;
+                if (hero.health.currentHealth % operand2 == 0)
+                    hero.health.currentHealth /= operand2;
                 break;
             }
         }
@@ -455,7 +458,8 @@ public class BattleSystem : MonoBehaviour
                 }
             case Operator.Division:
                 {
-                    enemy.health.currentHealth /= operand2;
+                    if(enemy.health.currentHealth % operand2 == 0)
+                        enemy.health.currentHealth /= operand2;
                     break;
                 }
         }
