@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BaseCard : MonoBehaviour
 {
-    public TextMesh textMeshRef; // set in editor
-
     private bool dragging = false;
     private Vector3 offset;
     private Vector3 startPosition;
+    public SpriteRenderer cardSpriteRenderer;
+    
     Dictionary<BaseHero,int> overlappingHeros = new Dictionary<BaseHero, int>();
     private BaseHero closestHero;
     int cardValue;
@@ -18,7 +18,7 @@ public class BaseCard : MonoBehaviour
     void Start()
     {
         cardValue = Random.Range(1, 10); // currently initialize with random int in [1,9]
-        textMeshRef.text = cardValue.ToString();
+        cardSpriteRenderer.sprite = Resources.Load<Sprite>("Card resources/" + "number" + cardValue.ToString());
 
         battleSystemRef = GameObject.Find("BattleSystem").GetComponent<BattleSystem>();
         if (battleSystemRef == null) Debug.Log(gameObject.name + ": BaseCard.cs Failed to find BattleSystem!");

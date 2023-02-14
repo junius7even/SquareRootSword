@@ -14,6 +14,9 @@ public enum BattleState {STARTLEVEL, CARDPREP, PLAYERTURN, PLAYERWAITING, PLAYER
 public class BattleSystem : MonoBehaviour
 {
     public static int levelNumber = 1;
+
+    public Animator heroAnimator;
+    public Animator enemyAnimator;
     
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
@@ -38,6 +41,10 @@ public class BattleSystem : MonoBehaviour
     public GameObject buttonRef; // set in editor
 
     public SpriteRenderer battleBackground; // set in editor
+
+    private bool hasAttacked;
+
+    private bool hasSquareRooted;
     // bound to button
     public void EndTurn()
     {
@@ -130,6 +137,13 @@ public class BattleSystem : MonoBehaviour
         // Handle player dragging to attack/health
         if (state == BattleState.PLAYERWAITING)
         {
+            if (heroAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f && heroAnimator.GetBool("IsAttacking"))
+            {
+                heroAnimator.SetBool("IsAttacking", false);
+                heroAnimator.SetBool("IsReady", false);
+                TransitionState(BattleState.PLAYERTURN);
+            }
+            heroAnimator.SetBool("IsReady", true);
             Rigidbody2D rigidBody = hero.GetComponent<Rigidbody2D>();
             Destroy(rigidBody);
             // Drag starts on 
@@ -145,29 +159,29 @@ public class BattleSystem : MonoBehaviour
                 heroIsDragging = false;
                 if (healthTextCurrentlyHovering != null)
                 {
+                    heroAnimator.SetBool("IsAttacking", true);
+                    heroAnimator.SetBool("IsReady", false);
                     GetComponent<DragIndicator>().lr.enabled = false;
                     if (healthTextCurrentlyHovering.CompareTag("Enemy"))
                     {
                         DealDamageToEnemy(hero.currentOperator, cardValueCached);
                         healthTextCurrentlyHovering = null;
-                        TransitionState(BattleState.PLAYERTURN);
                     }
                     else if (healthTextCurrentlyHovering.CompareTag("Hero"))
                     {
                         DealDamageToHero(hero.currentOperator, cardValueCached);
                         healthTextCurrentlyHovering = null;
-                        TransitionState(BattleState.PLAYERTURN);
                     }
                 }
                 else if (damageTextCurrentlyHovering != null)
                 {
+                    heroAnimator.SetBool("IsAttacking", true);
+                    heroAnimator.SetBool("IsReady", false);
                     GetComponent<DragIndicator>().lr.enabled = false;
                     ModifyAttackDamage(hero.currentOperator, cardValueCached);
                     damageTextCurrentlyHovering = null;
-                    TransitionState(BattleState.PLAYERTURN);
                 }
             }
-
         }
 
         if (state == BattleState.PLAYERTURNEND)
@@ -185,12 +199,24 @@ public class BattleSystem : MonoBehaviour
             if (enemyHealthSquareRootable())
             {
                 enemy.health.currentHealth = (int)Math.Sqrt(enemy.health.currentHealth);
-                TransitionState(BattleState.WON);
-                // To Do: play square root fx (square root sword drops down)
             }
             else if (enemy.health.currentHealth <= 0)
             {
-                TransitionState(BattleState.WON);
+                
+                if (enemyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f &&
+                    enemyAnimator.GetBool("IsDead"))
+                {
+                    enemyAnimator.SetBool("IsDead", false);
+                    enemy.health.currentHealth = 0;
+                    TransitionState(BattleState.WON);
+                }
+                else
+                {
+                    enemyAnimator.SetBool("IsDead", true);
+                }
+                
+                // Play death animation
+                // To Do: play square root fx (square root sword drops down)
                 // To Do: play normal enemy death fx
                 // show winning menu
                 //   restart by calling ResetGame()
@@ -199,43 +225,61 @@ public class BattleSystem : MonoBehaviour
             }
             else
             {
-                if (heroHealthSquareRootable())
+                if (enemyAttackDamageSquareRootable() && !hasSquareRooted)
                 {
-                    hero.health.currentHealth = 0;
-                    return;
-                }
-                    
-                if (enemyAttackDamageSquareRootable())
                     enemy.attackDamage = (int)Math.Sqrt(enemy.attackDamage);
-                // Enemy attacks player if it's not dead from the previous player attack
-                DealDamageToHero(Operator.Minus, enemy.attackDamage);
-                // TODO: play animation
+                    hasSquareRooted = true;
+                }
                 
-                TransitionState(BattleState.ENEMYTURNEND);
+                if (!hasAttacked)
+                {
+                    if (heroHealthSquareRootable())
+                    {
+                        hero.health.currentHealth = 0;
+                        enemyAnimator.SetBool("IsAttacking", true);
+                        hasAttacked = true;
+                    }
+                    else
+                    {
+                        // Enemy attacks player if it's not dead from the previous player attack
+                        DealDamageToHero(Operator.Minus, enemy.attackDamage);
+                        enemyAnimator.SetBool("IsAttacking", true);
+                        hasAttacked = true;
+                    }
+                }
+                else if (enemyAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f &&
+                         enemyAnimator.GetBool("IsAttacking"))
+                {
+                    enemyAnimator.SetBool("IsAttacking", false);
+                    hasAttacked = false;
+                    hasSquareRooted = false;
+                    TransitionState(BattleState.ENEMYTURNEND);
+                }
             }
-            return;
         }
-
+        
         if (state == BattleState.ENEMYTURNEND)
         {
-            if (elapsedTime > 2)
+            if (hero.health.currentHealth <= 0)
             {
-                enemy.ResetAttackDamage();
-                if (hero.health.currentHealth <= 0)
+                if (heroAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f &&
+                    heroAnimator.GetBool("IsDead"))
                 {
                     TransitionState(BattleState.LOST);
+                    return;
                 }
-                else
-                {
-                    TransitionState(BattleState.CARDPREP);
-                }
+                heroAnimator.SetBool("IsDead", true);
             }
-            return;
+            else
+            {
+                TransitionState(BattleState.CARDPREP);
+                enemy.ResetAttackDamage();
+                return;
+            }
         }
 
         if (state == BattleState.WON)
         {
-            
             if (elapsedTime > 3)
             {
                 
@@ -254,8 +298,8 @@ public class BattleSystem : MonoBehaviour
             }
 
             return;
-        }
-
+        } 
+        
         if (state == BattleState.LOST)
         {
             if (elapsedTime > 3)

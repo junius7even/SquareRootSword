@@ -6,12 +6,13 @@ public class BaseEnemy : MonoBehaviour
 {
     public int[] attackDamagePerLevel = { 0, 4, 6, 15, 10 };
     public int[] healthPerLevel = { 7, 19, 91, 151, 331 };
-
+    private int maxAttackDamage;
     [field: SerializeField]
     public Health health;
-    public int maxAttackDamage = 5;
     public int attackDamage;
     public TextMesh attackDamageTextMesh;
+
+    public BattleSystem battleSystem;
 
     public SpriteRenderer enemySprite;
 
@@ -23,6 +24,7 @@ public class BaseEnemy : MonoBehaviour
     void Update()
     {
         this.attackDamageTextMesh.text = attackDamage.ToString();
+        maxAttackDamage = attackDamagePerLevel[BattleSystem.levelNumber-1];
     }
     public void ResetAttackDamage()
     {
