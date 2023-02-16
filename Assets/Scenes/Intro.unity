@@ -196,7 +196,7 @@ MonoBehaviour:
   - 'Keep in mind that you can not only change the enemy''s health '
   - All numbers can be changed
   - So let's start the fight
-  nextscene: DragDemo
+  nextscene: BattleScene
   textSpeed: 0.1
 --- !u!114 &808456761
 MonoBehaviour:

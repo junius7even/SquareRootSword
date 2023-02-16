@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Victory.unity
     guid: 4ad9ad3a6136249e98d3f4cab0d823ca
-  - enabled: 1
+  - enabled: 0
     path: Assets/Level1.unity
     guid: 86adc23fea8c92147a866dd3cea649f0
   - enabled: 1
@@ -27,9 +27,12 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOverScene.unity
     guid: 1dd64279b98bbb843a107f9fdac16cb7
   - enabled: 1
-    path: Assets/Scenes/DragDemo.unity
+    path: Assets/Scenes/BattleScene.unity
     guid: 26a7ad479a4014f42ac181b855f62e4f
   - enabled: 1
     path: Assets/Scenes/ShopScene.unity
     guid: 6de6d7bada0a14ea38692e3c1e40c314
+  - enabled: 1
+    path: Assets/Scenes/GameEndScene.unity
+    guid: b457d1f33e932483ca06dfad4e3dd957
   m_configObjects: {}

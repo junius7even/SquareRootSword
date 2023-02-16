@@ -12,7 +12,8 @@ public class RestartButton : MonoBehaviour
 
     void TaskOnClick()
     {
-        Loader.Load(Loader.Scene.DragDemo);
+        Loader.Load(Loader.Scene.BattleScene);
+        BattleSystem.levelNumber = 1;
         Debug.Log("Button was clicked!");
     }
 }

@@ -13,12 +13,6 @@ public class Health : MonoBehaviour
     public TextMesh textMeshRef; // set in editor
 
     // Start is called before the first frame update
-    void Start()
-    {
-
-        // this.healthText.text = currentHealth.ToString();
-        ResetHealth();
-    }
 
     private void Update()
     {
@@ -31,6 +25,6 @@ public class Health : MonoBehaviour
     }
     public void ClampHealthCheck()
     {
-        if (currentHealth > maxHealth) ResetHealth();
+        if (currentHealth > BaseHero.levelHealth) ResetHealth();
     }
 }
